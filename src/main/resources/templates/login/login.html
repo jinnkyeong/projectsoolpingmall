@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}"> <!-- default layout 사용 -->
+   
+<!-- index.html 고유 CSS 추가 -->
+<th:block layout:fragment="css">
+
+<link rel="stylesheet" th:href="@{/css/login/login.css}" >
+</th:block>
+<!-- index.html 고유 스크립트 추가 -->
+<th:block layout:fragment="script">
+	<script th:src="@{https://developers.kakao.com/sdk/js/kakao.js}"></script>
+	<script th:src="@{https://developers.kakao.com/sdk/js/kakao.js}"></script>
+
+
+</th:block>
+
+<title>술핑몰</title>
+
+<!-- 페이지의 실제 content 내용 -->
+<div layout:fragment="contentFragment">
+    <!-- Hero Section Begin -->
+    <section class="hero">
+        <div class="container">
+            <div class="row">
+
+				 <div class="wrapper">
+				    <h2>Login</h2>
+				    <form  id="frm" method="post" action="/login">
+				    	<input type="hidden" name="referer" th:value="${referer}"> 
+				      <div class="input-box">
+				        <input type="text" name="user_id" id="user_id" placeholder="ID" required>
+				      </div>
+				      <div class="input-box">
+				        <input type="password"  name="user_passwd" id="user_passwd" placeholder="Password" required>
+				      	<div th:text="${data}"></div>
+				      </div>
+				      <div class="input-box button">
+				        <input type="submit" id="btnLogin" value="Login" >
+				      </div>
+				      <hr>
+				       <div class="input-box kakaologin">
+				        <a href="https://kauth.kakao.com/oauth/authorize?
+								client_id=c2b5e019d5554c9e47d42e285de7f080&
+								redirect_uri=http://localhost/auth/kakao&
+								response_type=code"><img id="kakaologin" src="images/login/kakao_login.png"></a><!-- 카카오 로그인 -->
+				    
+				      	   <a href="https://accounts.google.com/o/oauth2/v2/auth?client_id=633724080548-1kq9fljlhhtan0dtm8mufpptotu41688.apps.googleusercontent.com&redirect_uri=http://localhost/auth/google&response_type=code&scope=email profile">
+				      	   		<img id="googlelogin" src="images/login/google_btn.png">
+				      	   </a> <!-- 이메일,프로필 조회 -->
+				      </div>
+				   
+				      <div class="text">
+				        <h3>아직 회원가입을 하지 않으셨나요? <a href="signUp">회원가입하기</a></h3>
+				     
+				      </div>
+				      <div class="text">
+				        <h3>ID,Password를 잊으셨나요? <a href="findId">아이디 찾기</a>&nbsp;<a href="findPasswd">비밀번호 찾기</a></h3>
+				        
+				      </div>
+				 
+				    </form>
+				  </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Section End -->
+
+</div>
+</html>

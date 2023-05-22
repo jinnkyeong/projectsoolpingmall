@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}"> <!-- default layout 사용 -->
+      
+      
+<th:block layout:fragment="css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lux/bootstrap.min.css" integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous">
+
+
+</th:block>
+
+<th:block layout:fragment="script">
+<script type="text/javascript">
+	window.onload = function(){
+		document.querySelector("#btnLogin").addEventListener("click",function(){
+			location.href="/login";
+		})
+		document.querySelector("#btnFindPasswd").addEventListener("click",function(){
+			location.href="/findPasswd";
+		})
+	
+	}
+	</script>
+
+</th:block>
+
+
+
+<div layout:fragment="contentFragment">
+
+    <!-- Hero Section Begin -->
+    <section class="hero">
+        <div class="container">
+            <div class="row">
+				<div class="container">
+					<h2>아이디 찾기 결과</h2>
+					<div class="box">
+						<p class="text text-primary">회원님의 이메일로 가입된 아이디가 있습니다</p>
+						<p class="text-info">[[${data}]]</p>
+					</div>
+					<button type="button" id="btnFindPasswd" class="btn btn-outline-primary">비밀번호 찾기</button>
+					<button type="button"  id="btnLogin" class="btn btn-outline-success">로그인</button>
+				</div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Section End -->
+
+</div>
+</html>
